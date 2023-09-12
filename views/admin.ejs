@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <h1>Admin Panel</h1>
+
+    <form id="task-form">
+      <label for="task">Enter Task:</label>
+      <input type="text" id="task" required />
+      <button type="submit">Post Task</button>
+    </form>
+
+    <button id="reveal-button">Reveal Estimates</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      socket.emit("admin-identify");
+
+      const taskForm = document.getElementById("task-form");
+      const taskInput = document.getElementById("task");
+      const revealButton = document.getElementById("reveal-button");
+
+      taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const task = taskInput.value;
+        socket.emit("post-task", task);
+        taskInput.value = "";
+      });
+
+      revealButton.addEventListener("click", () => {
+        console.log("clicked reveal button");
+        socket.emit("reveal-estimates");
+      });
+
+      socket.on("reveal-estimates", (isHidden) => {
+        console.log("revealing estimates", isHidden);
+        if (isHidden) {
+          revealButton.textContent = "Reveal Estimates";
+        } else {
+          revealButton.textContent = "Hide Estimates";
+        }
+      });
+    </script>
+  </body>
+</html>
