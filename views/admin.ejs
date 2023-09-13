@@ -37,8 +37,9 @@
         socket.emit("reveal-estimates");
       });
 
-      socket.on("reveal-estimates", (isHidden) => {
-        console.log("revealing estimates", isHidden);
+      socket.on("reveal-estimates", (isHidden, users) => {
+        console.log("hidden estimates", isHidden);
+        console.log("Users", users);
         if (isHidden) {
           revealButton.textContent = "Reveal Estimates";
         } else {

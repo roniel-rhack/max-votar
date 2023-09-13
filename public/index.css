@@ -1,0 +1,390 @@
+.background {
+    z-index: -1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgb(12,48,124);
+    background: radial-gradient(circle, rgba(12,48,124,0.7959558823529411) 0%, rgba(63,23,120,0.7483368347338936) 100%);
+    /*background: rgb(63,124,251);*/
+    /*background: radial-gradient(circle, rgba(63,124,251,1) 0%, rgba(146,70,252,1) 100%);*/
+    overflow: hidden;
+}
+
+.navbar {
+    background: rgba(128, 255, 184, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3.2px);
+}
+
+#usernameTxt {
+    background: rgba(128, 255, 184, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3.2px);
+}
+
+.estimate {
+    border-radius: 30px;
+    width: 38px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3.2px);
+    margin: 0.5rem;
+}
+
+#estimate-form {
+    text-align: center;
+}
+
+#button1 {
+    background-color: #feb762;
+    border-color: #feb762;
+    color: black;
+}
+
+#button2 {
+    background-color: #fc756f;
+    border-color: #fc756f;
+    color: black;
+}
+
+#button3 {
+    background-color: #ffbae8;
+    border-color: #ffbae8;
+    color: black;
+}
+
+#button5 {
+    background-color: #c4afed;
+    border-color: #c4afed;
+    color: black;
+}
+
+#button8 {
+    background-color: #a0e0ee;
+    border-color: #a0e0ee;
+}
+
+#button13 {
+    padding-left: 9px;
+    background-color: #00f8b4;
+    border-color: #00f8b4;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.card-img-top {
+    padding: 1rem;
+    transform: translate(0, -50%);
+}
+
+#estimates {
+    margin-top: 6rem;
+    display: flex;
+    gap: 10px;
+}
+
+.card {
+    background: rgba(128, 255, 184, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3.2px);
+    width: 10rem;
+    height: 10rem;
+}
+
+.card-body {
+    transform: translate(0, -100%);
+}
+
+@keyframes move {
+    100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+}
+
+.background span {
+    width: 15vmin;
+    height: 15vmin;
+    border-radius: 20vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move;
+    animation-duration: 45;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.background span:nth-child(0) {
+    color: #f5adff;
+    top: 44%;
+    left: 58%;
+    animation-duration: 52s;
+    animation-delay: -4s;
+    transform-origin: -10vw -18vh;
+    box-shadow: 40vmin 0 5.424758460971285vmin currentColor;
+}
+
+.background span:nth-child(1) {
+    color: #f5adff;
+    top: 35%;
+    left: 4%;
+    animation-duration: 22s;
+    animation-delay: -21s;
+    transform-origin: 8vw 4vh;
+    box-shadow: -40vmin 0 5.252492476021578vmin currentColor;
+}
+
+.background span:nth-child(2) {
+    color: #f5adff;
+    top: 66%;
+    left: 55%;
+    animation-duration: 54s;
+    animation-delay: -42s;
+    transform-origin: 0vw -4vh;
+    box-shadow: -40vmin 0 5.936784741826743vmin currentColor;
+}
+
+.background span:nth-child(3) {
+    color: #f5adff;
+    top: 58%;
+    left: 14%;
+    animation-duration: 15s;
+    animation-delay: -34s;
+    transform-origin: 1vw -19vh;
+    box-shadow: 40vmin 0 5.248514590786091vmin currentColor;
+}
+
+.background span:nth-child(4) {
+    color: #7cdff3;
+    top: 68%;
+    left: 80%;
+    animation-duration: 34s;
+    animation-delay: -6s;
+    transform-origin: 20vw -2vh;
+    box-shadow: -40vmin 0 5.683268812291786vmin currentColor;
+}
+
+.background span:nth-child(5) {
+    color: #7cdff3;
+    top: 8%;
+    left: 25%;
+    animation-duration: 6s;
+    animation-delay: -30s;
+    transform-origin: -21vw -23vh;
+    box-shadow: 40vmin 0 5.35494247128646vmin currentColor;
+}
+
+.background span:nth-child(6) {
+    color: #f5adff;
+    top: 1%;
+    left: 3%;
+    animation-duration: 38s;
+    animation-delay: -28s;
+    transform-origin: 4vw 16vh;
+    box-shadow: -40vmin 0 5.517304522527276vmin currentColor;
+}
+
+.background span:nth-child(7) {
+    color: #7cdff3;
+    top: 18%;
+    left: 88%;
+    animation-duration: 11s;
+    animation-delay: -15s;
+    transform-origin: 20vw 22vh;
+    box-shadow: -40vmin 0 5.726862395663071vmin currentColor;
+}
+
+.background span:nth-child(8) {
+    color: #f5adff;
+    top: 32%;
+    left: 1%;
+    animation-duration: 42s;
+    animation-delay: -40s;
+    transform-origin: 16vw 12vh;
+    box-shadow: -40vmin 0 5.69235167138954vmin currentColor;
+}
+
+.background span:nth-child(9) {
+    color: #f5adff;
+    top: 57%;
+    left: 43%;
+    animation-duration: 42s;
+    animation-delay: -27s;
+    transform-origin: -17vw -23vh;
+    box-shadow: -40vmin 0 5.781901229369073vmin currentColor;
+}
+
+.background span:nth-child(10) {
+    color: #58e4c8;
+    top: 61%;
+    left: 89%;
+    animation-duration: 29s;
+    animation-delay: -23s;
+    transform-origin: -6vw 2vh;
+    box-shadow: -40vmin 0 5.777861727729276vmin currentColor;
+}
+
+.background span:nth-child(11) {
+    color: #7cdff3;
+    top: 45%;
+    left: 35%;
+    animation-duration: 34s;
+    animation-delay: -12s;
+    transform-origin: 3vw 19vh;
+    box-shadow: 40vmin 0 5.165030655454375vmin currentColor;
+}
+
+.background span:nth-child(12) {
+    color: #58e4c8;
+    top: 64%;
+    left: 14%;
+    animation-duration: 17s;
+    animation-delay: -23s;
+    transform-origin: 6vw -13vh;
+    box-shadow: 40vmin 0 5.364444254977288vmin currentColor;
+}
+
+.background span:nth-child(13) {
+    color: #7cdff3;
+    top: 41%;
+    left: 74%;
+    animation-duration: 26s;
+    animation-delay: -16s;
+    transform-origin: 2vw -18vh;
+    box-shadow: -40vmin 0 5.694254417648302vmin currentColor;
+}
+
+.background span:nth-child(14) {
+    color: #58e4c8;
+    top: 69%;
+    left: 39%;
+    animation-duration: 38s;
+    animation-delay: -11s;
+    transform-origin: -2vw -18vh;
+    box-shadow: 40vmin 0 5.951218919381205vmin currentColor;
+}
+
+.background span:nth-child(15) {
+    color: #7cdff3;
+    top: 49%;
+    left: 26%;
+    animation-duration: 38s;
+    animation-delay: -38s;
+    transform-origin: 14vw -19vh;
+    box-shadow: -40vmin 0 5.402447787727881vmin currentColor;
+}
+
+.background span:nth-child(16) {
+    color: #58e4c8;
+    top: 25%;
+    left: 90%;
+    animation-duration: 14s;
+    animation-delay: -20s;
+    transform-origin: -9vw 4vh;
+    box-shadow: 40vmin 0 5.911681915628673vmin currentColor;
+}
+
+.background span:nth-child(17) {
+    color: #58e4c8;
+    top: 28%;
+    left: 2%;
+    animation-duration: 32s;
+    animation-delay: -12s;
+    transform-origin: 14vw 23vh;
+    box-shadow: -40vmin 0 5.32564930727438vmin currentColor;
+}
+
+.background span:nth-child(18) {
+    color: #7cdff3;
+    top: 80%;
+    left: 56%;
+    animation-duration: 8s;
+    animation-delay: -18s;
+    transform-origin: 12vw 13vh;
+    box-shadow: -40vmin 0 5.921656438082035vmin currentColor;
+}
+
+.background span:nth-child(19) {
+    color: #7cdff3;
+    top: 16%;
+    left: 80%;
+    animation-duration: 7s;
+    animation-delay: -43s;
+    transform-origin: -21vw 13vh;
+    box-shadow: -40vmin 0 5.420899120504462vmin currentColor;
+}
+
+svg {
+    height: 7rem;
+}
+
+.path {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 100%;
+    animation: dash 4.5s linear;
+}
+
+.path:nth-child(10) {
+    animation-delay: -2s;
+}
+.path:nth-child(9) {
+    animation-delay: -1.75s;
+}
+.path:nth-child(8) {
+    animation-delay: -1.5s;
+}
+.path:nth-child(7) {
+    animation-delay: -1.5s;
+}
+.path:nth-child(6) {
+    animation-delay: -1.25s;
+}
+.path:nth-child(5) {
+    animation-delay: -1s;
+}
+.path:nth-child(4) {
+    animation-delay: -0.75s;
+}
+.path:nth-child(3) {
+    animation-delay: -0.5s;
+}
+.path:nth-child(2) {
+    animation-delay: -0.25s;
+}
+
+@keyframes dash {
+    0%,
+    50% {
+        stroke-dashoffset: 100%;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.py-3{
+    padding-bottom: 0 !important;
+}
+
+#current-task{
+    margin-bottom: 0 !important;
+}
+
+.container-fluid {
+    justify-content: center !important;
+}
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+    color: aliceblue;
+}

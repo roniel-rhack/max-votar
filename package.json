@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/material": "^5.14.8",
+    "@mui/styled-engine-sc": "^5.14.8",
     "bootstrap-icons": "^1.10.5",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "styled-components": "^5.3.11"
   }
 }

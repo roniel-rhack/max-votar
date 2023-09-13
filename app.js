@@ -10,15 +10,15 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('index');
+    res.render('index', {users: users});
 });
 
 app.get('/admin', (req, res) => {
-  res.render('admin');
+    res.render('admin');
 });
 
 app.get('/about', (req, res) => {
-  res.render('about');
+    res.render('about');
 });
 
 let currentTask = '';
@@ -27,40 +27,43 @@ let adminSocketId = null;
 const users = {};
 
 io.on('connection', (socket) => {
-  socket.on('post-task', (task) => {
-    currentTask = task;
-    socket.broadcast.emit('new-task', task);
-  });
+    socket.on('post-task', (task) => {
+        currentTask = task;
+        socket.broadcast.emit('new-task', task);
+    });
 
-  socket.on('admin-identify', () => {
-    adminSocketId = socket.id;
-  });
+    socket.on('admin-identify', () => {
+        adminSocketId = socket.id;
+    });
 
-  socket.on('user-identify', (username) => {
-    users[socket.id] = { username, estimate: null };
-  });
+    socket.on('user-identify', (user) => {
+        users[socket.id] = user;
+        console.log(users);
+        io.emit('load-table', users);
+    });
 
-  socket.on('submit-estimate', (estimate) => {
-    users[socket.id].estimate = estimate;
-    io.emit('new-estimate', { username: users[socket.id].username, estimate });
-  });
+    socket.on('submit-estimate', (estimate) => {
+        users[socket.id].estimate = estimate;
+        io.emit('new-estimate', users[socket.id]);
+    });
 
-  socket.on('reveal-estimates', () => {
-    if (socket.id === adminSocketId) {
-      estimatesHidden = !estimatesHidden;
-      io.emit('reveal-estimates', estimatesHidden);
-    }
-  });
+    socket.on('reveal-estimates', () => {
+        if (socket.id === adminSocketId) {
+            estimatesHidden = !estimatesHidden;
+            console.log(estimatesHidden);
+            io.emit('reveal-estimates', estimatesHidden, users);
+        }
+    });
 
-  socket.on('disconnect', () => {
-    if (socket.id === adminSocketId) {
-      adminSocketId = null;
-    } else {
-      delete users[socket.id];
-    }
-  });
+    socket.on('disconnect', () => {
+        if (socket.id === adminSocketId) {
+            adminSocketId = null;
+        } else {
+            delete users[socket.id];
+        }
+    });
 });
 
 server.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+    console.log('Server is running on http://localhost:3000');
 });
