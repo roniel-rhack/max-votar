@@ -5,10 +5,8 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background: rgb(12,48,124);
-    background: radial-gradient(circle, rgba(12,48,124,0.7959558823529411) 0%, rgba(63,23,120,0.7483368347338936) 100%);
-    /*background: rgb(63,124,251);*/
-    /*background: radial-gradient(circle, rgba(63,124,251,1) 0%, rgba(146,70,252,1) 100%);*/
+    background: rgb(12, 48, 124);
+    background: radial-gradient(circle, rgba(12, 48, 124, 0.7959558823529411) 0%, rgba(63, 23, 120, 0.7483368347338936) 100%);
     overflow: hidden;
 }
 
@@ -19,19 +17,59 @@
     backdrop-filter: blur(3.2px);
 }
 
-#usernameTxt {
+#usernameTxt, #taskTxt {
     background: rgba(128, 255, 184, 0.22);
     border-radius: 16px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(3.2px);
 }
 
+#reveal-button {
+    background-color: #d8a7cd;
+    --bs-btn-hover-color: aliceblue;
+    --bs-btn-hover-border-color: aliceblue;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3.2px);
+}
+
+.btn-primary {
+    background-color: #9bdaca;
+    color: black;
+    --bs-btn-hover-bg: #9bdaca;
+    --bs-btn-border-color: #9bdaca;
+    --bs-btn-hover-border-color: aliceblue;
+    --bs-btn-hover-color: aliceblue;
+    --bs-btn-active-bg: #9bdaca;
+    --bs-btn-active-border-color: #9bdaca;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3.2px);
+}
+
+.form-check {
+    margin-left: 10px;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+#CatCB {
+    margin-top: 4px !important;
+}
+
 .estimate {
     border-radius: 30px;
-    width: 38px;
+    width: 50px;
+    height: 50px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(3.2px);
     margin: 0.5rem;
+    transition: transform .2s ease;
+    --bs-btn-hover-border-color: aliceblue;
+    --bs-btn-hover-color: aliceblue;
+    color: black;
+}
+
+.estimate:active {
+    transform: scale(.3);
 }
 
 #estimate-form {
@@ -41,25 +79,21 @@
 #button1 {
     background-color: #feb762;
     border-color: #feb762;
-    color: black;
 }
 
 #button2 {
     background-color: #fc756f;
     border-color: #fc756f;
-    color: black;
 }
 
 #button3 {
     background-color: #ffbae8;
     border-color: #ffbae8;
-    color: black;
 }
 
 #button5 {
     background-color: #c4afed;
     border-color: #c4afed;
-    color: black;
 }
 
 #button8 {
@@ -68,7 +102,7 @@
 }
 
 #button13 {
-    padding-left: 9px;
+    padding-left: 10px;
     background-color: #00f8b4;
     border-color: #00f8b4;
 }
@@ -83,10 +117,10 @@ html, body {
     transform: translate(0, -50%);
 }
 
-#estimates {
+#usersCards {
     margin-top: 6rem;
-    display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 .card {
@@ -109,8 +143,8 @@ html, body {
 }
 
 .background span {
-    width: 15vmin;
-    height: 15vmin;
+    width: 7vmin;
+    height: 7vmin;
     border-radius: 20vmin;
     backface-visibility: hidden;
     position: absolute;
@@ -333,27 +367,35 @@ svg {
 .path:nth-child(10) {
     animation-delay: -2s;
 }
+
 .path:nth-child(9) {
     animation-delay: -1.75s;
 }
+
 .path:nth-child(8) {
     animation-delay: -1.5s;
 }
+
 .path:nth-child(7) {
     animation-delay: -1.5s;
 }
+
 .path:nth-child(6) {
     animation-delay: -1.25s;
 }
+
 .path:nth-child(5) {
     animation-delay: -1s;
 }
+
 .path:nth-child(4) {
     animation-delay: -0.75s;
 }
+
 .path:nth-child(3) {
     animation-delay: -0.5s;
 }
+
 .path:nth-child(2) {
     animation-delay: -0.25s;
 }
@@ -368,11 +410,11 @@ svg {
     }
 }
 
-.py-3{
+.py-3 {
     padding-bottom: 0 !important;
 }
 
-#current-task{
+#current-task {
     margin-bottom: 0 !important;
 }
 
@@ -387,4 +429,11 @@ h4 {
 h5 {
     text-align: center;
     color: aliceblue;
+}
+
+.multicolortext {
+    background-image: linear-gradient(to left, #d8a7cd, #feb4be, #9bdaca, #ffa685, #ffd59e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }

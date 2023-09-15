@@ -38,8 +38,10 @@ io.on('connection', (socket) => {
 
     socket.on('user-identify', (user) => {
         users[socket.id] = user;
-        console.log(users);
-        io.emit('load-table', users);
+        io.emit('load-cards', users);
+        if(currentTask !== ''){
+            socket.broadcast.emit('new-task', currentTask);
+        }
     });
 
     socket.on('submit-estimate', (estimate) => {
@@ -50,9 +52,16 @@ io.on('connection', (socket) => {
     socket.on('reveal-estimates', () => {
         if (socket.id === adminSocketId) {
             estimatesHidden = !estimatesHidden;
-            console.log(estimatesHidden);
             io.emit('reveal-estimates', estimatesHidden, users);
+            currentTask = '';
         }
+    });
+
+    socket.on('clear-estimates', () => {
+        for(user in users){
+            users[user].estimate = null;
+        }
+        io.emit('load-cards', users);
     });
 
     socket.on('disconnect', () => {
