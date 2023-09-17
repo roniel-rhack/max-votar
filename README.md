@@ -1,6 +1,7 @@
 # Max-Votar - Poker Planning App
 
-<img width="1349" alt="image" src="https://github.com/roniel-rhack/max-votar/assets/42304672/054f0637-be1c-4a11-8082-fa4774814d4f">
+<img width="1349" alt="image" src="https://github.com/roniel-rhack/max-votar/assets/42304672/faa1b854-b929-4d0e-93d7-81cb2ca54bbe">
+
 
 
 Max-Votar is a Poker Planning App implemented using Node.js that helps Agile teams estimate and prioritize their work effectively. This app simplifies the process of estimating the complexity of tasks through collaborative voting, ensuring that everyone on the team has a say in the estimation process.
