@@ -28,11 +28,13 @@ const users = {};
 
 io.on('connection', (socket) => {
     socket.on('post-task', (task) => {
+        estimatesHidden = true;
         currentTask = task;
         socket.broadcast.emit('new-task', task);
     });
 
     socket.on('admin-identify', () => {
+        currentTask = '';
         adminSocketId = socket.id;
     });
 
@@ -45,20 +47,22 @@ io.on('connection', (socket) => {
     });
 
     socket.on('submit-estimate', (estimate) => {
-        users[socket.id].estimate = estimate;
-        io.emit('new-estimate', users[socket.id]);
+        if (users[socket.id]) {
+            users[socket.id].estimate = estimate;
+            io.emit('new-estimate', users[socket.id]);
+        }
     });
 
     socket.on('reveal-estimates', () => {
         if (socket.id === adminSocketId) {
-            estimatesHidden = !estimatesHidden;
-            io.emit('reveal-estimates', estimatesHidden, users);
+            estimatesHidden = false;
+            io.emit('reveal-estimates', users);
             currentTask = '';
         }
     });
 
     socket.on('clear-estimates', () => {
-        for(user in users){
+        for (let user in users) {
             users[user].estimate = null;
         }
         io.emit('load-cards', users);

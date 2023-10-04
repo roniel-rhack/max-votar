@@ -66,6 +66,7 @@
     --bs-btn-hover-border-color: aliceblue;
     --bs-btn-hover-color: aliceblue;
     color: black;
+    display: inline-block;
 }
 
 .estimate:active {
