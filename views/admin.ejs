@@ -105,19 +105,15 @@
         currentTaskElement.textContent = task;
         socket.emit("post-task", task);
         taskInput.value = "";
+        average.style.display = "none";
+        revealButton.style.display = "inline-block";
+        hiddenEstimates = true;
     });
 
     revealButton.addEventListener("click", () => {
+        hiddenEstimates = false;
+        revealButton.style.display = "none";
         socket.emit("reveal-estimates");
-    });
-
-    socket.on("reveal-estimates", (isHidden) => {
-        hiddenEstimates = isHidden;
-        if (isHidden) {
-            revealButton.textContent = "Reveal Estimates";
-        } else {
-            revealButton.textContent = "Hide Estimates";
-        }
     });
 
     const updateCards = (users) => {
@@ -161,11 +157,7 @@
 
     socket.on("new-estimate", (user) => {
         let estimate = document.getElementById(user.username);
-        if (hiddenEstimates) {
-            estimate.innerHTML = `<p id=${user.username} class="card-text">?</p>`;
-        } else {
-            estimate.innerHTML = `<p id=${user.username} class="card-text">${user.estimate}</p>`;
-        }
+        estimate.innerHTML = `<p id=${user.username} class="card-text">?</p>`;
     });
 
     const calculateAverage = (users) => {
@@ -180,14 +172,10 @@
         return sum / count;
     }
 
-    socket.on("reveal-estimates", (estimatesHidden, users) => {
-        hiddenEstimates = estimatesHidden;
+    socket.on("reveal-estimates", (users) => {
         updateCards(users);
-        if (!estimatesHidden) {
-            averageTxt.innerText = "Average: " + calculateAverage(users);
-            average.style.display = "block";
-        } else
-            average.style.display = "none";
+        averageTxt.innerText = "Average: " + calculateAverage(users);
+        average.style.display = "block";
     });
 </script>
 </body>
