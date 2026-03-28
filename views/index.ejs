@@ -202,37 +202,44 @@
         return `https://robohash.org/${result}.png?${type}`;
     }
 
+    const createCard = (username, avatar, estimateText) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const img = document.createElement('img');
+        img.className = 'card-img-top';
+        img.alt = '...';
+        img.src = avatar;
+
+        const body = document.createElement('div');
+        body.className = 'card-body';
+
+        const title = document.createElement('h4');
+        title.className = 'card-title';
+        title.textContent = username;
+
+        const text = document.createElement('h5');
+        text.id = username;
+        text.className = 'card-text';
+        text.textContent = estimateText;
+
+        body.appendChild(title);
+        body.appendChild(text);
+        card.appendChild(img);
+        card.appendChild(body);
+        return card;
+    };
+
     const updateCards = (users) => {
-        usersCards.innerHTML = "";
+        usersCards.replaceChildren();
         for (const socketId in users) {
             let user = users[socketId];
             if (user.estimate == null) {
-                usersCards.innerHTML += `
-                    <div class="card">
-                        <img  class="card-img-top" alt="..." src=${user.avatar}>
-                        <div class="card-body">
-                            <h4 class="card-title">${user.username}</h4>
-                            <h5 id=${user.username} class="card-text">-</h5>
-                        </div>
-                    </div>`
+                usersCards.appendChild(createCard(user.username, user.avatar, '-'));
             } else if (hiddenEstimates) {
-                usersCards.innerHTML += `
-                    <div class="card">
-                        <img class="card-img-top" alt="..." src=${user.avatar}>
-                        <div class="card-body">
-                            <h4 class="card-title">${user.username}</h4>
-                            <h5 id=${user.username} class="card-text">?</h5>
-                        </div>
-                    </div>`;
+                usersCards.appendChild(createCard(user.username, user.avatar, '?'));
             } else {
-                usersCards.innerHTML += `
-                    <div class="card">
-                        <img  class="card-img-top" alt="..." src=${user.avatar}>
-                        <div class="card-body">
-                            <h4 class="card-title">${user.username}</h4>
-                            <h5 id=${user.username} class="card-text">${user.estimate}</h5>
-                        </div>
-                    </div>`;
+                usersCards.appendChild(createCard(user.username, user.avatar, user.estimate));
             }
         }
     }
@@ -243,7 +250,9 @@
 
     socket.on("new-estimate", (user) => {
         let estimate = document.getElementById(user.username);
-        estimate.innerHTML = `<p id=${user.username} class="card-text">?</p>`;
+        if (estimate) {
+            estimate.textContent = '?';
+        }
     });
 
     const calculateAverage = (users) => {
